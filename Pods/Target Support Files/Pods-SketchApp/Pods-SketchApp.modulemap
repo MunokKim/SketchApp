@@ -1,0 +1,6 @@
+framework module Pods_SketchApp {
+  umbrella header "Pods-SketchApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

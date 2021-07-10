@@ -1,0 +1,6 @@
+framework module Pods_SketchApp_SketchAppUITests {
+  umbrella header "Pods-SketchApp-SketchAppUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
