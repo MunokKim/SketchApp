@@ -6,6 +6,7 @@ target 'SketchApp' do
   use_frameworks!
 
   # Pods for SketchApp
+  pod 'SnapKit', '~> 5.0.0'
 
   target 'SketchAppTests' do
     inherit! :search_paths
