@@ -10,6 +10,10 @@ import PencilKit
 import SnapKit
 
 class CanvasViewController: UIViewController {
+    // MARK: - Declarations
+    
+    var pen = PKInkingTool(.pen, color: Colors.primary.color, width: 5)
+    
     // MARK: - Views
     
     let toolBarView: UIView = {
@@ -30,7 +34,7 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var saveButton: ToolButton = {
-        let action = UIAction(title: "SAVE", handler: save)
+        let action = UIAction(title: "SAVE", handler: saveHandler)
         let button = ToolButton(primaryAction: action)
         button.titleLabel?.font = button.titleLabel?.font.withSize(4)
         
@@ -38,14 +42,14 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var loadButton: ToolButton = {
-        let action = UIAction(title: "LOAD", handler: load)
+        let action = UIAction(title: "LOAD", handler: loadHandler)
         let button = ToolButton(primaryAction: action)
         
         return button
     }()
     
     lazy var addButton: ToolButton = {
-        let action = UIAction(title: "ADD", handler: add)
+        let action = UIAction(title: "ADD", handler: addHandler)
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -63,7 +67,7 @@ class CanvasViewController: UIViewController {
     
     lazy var undoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.backward")
-        let action = UIAction(image: image, handler: load)
+        let action = UIAction(image: image, handler: undoHandler)
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -71,15 +75,39 @@ class CanvasViewController: UIViewController {
     
     lazy var redoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.forward")
-        let action = UIAction(image: image, handler: redo)
+        let action = UIAction(image: image, handler: redoHandler)
         let button = ToolButton(primaryAction: action)
         
         return button
     }()
     
     lazy var penButton: ToolButton = {
-        let action = UIAction(title: "PEN", handler: pen)
-        let button = ToolButton(primaryAction: action)
+        let primaryAction = UIAction(title: "PEN", handler: { _ in })
+        let penActions = Colors.allCases
+            .map {
+                UIAction(
+                    image: UIImage(systemName: "pencil")!.withTintColor($0.color, renderingMode: .alwaysOriginal),
+                    identifier: UIAction.Identifier($0.rawValue),
+                    handler: penHandler
+                )
+            }
+        let markerActions = Colors.allCases
+            .map {
+                UIAction(
+                    image: UIImage(systemName: "scribble.variable")!.withTintColor($0.color, renderingMode: .alwaysOriginal),
+                    identifier: UIAction.Identifier($0.rawValue),
+                    handler: markerHandler
+                )
+            }
+        let lassoAction = UIAction(title: "Lasso", image: UIImage(systemName: "lasso"), handler: lassoHandler)
+        
+        let penMenu = UIMenu(title: "Pen", image: UIImage(systemName: "pencil"), children: penActions)
+        let markerMenu = UIMenu(title: "Marker", image: UIImage(systemName: "scribble.variable"), children: markerActions)
+        let menu = UIMenu(title: "Choose a pen", children: [penMenu, markerMenu, lassoAction])
+        
+        let button = ToolButton(primaryAction: primaryAction)
+        button.menu = menu
+        button.showsMenuAsPrimaryAction = true
         
         return button
     }()
@@ -91,12 +119,12 @@ class CanvasViewController: UIViewController {
         return button
     }()
     
-    let canvasView: PKCanvasView = {
+    lazy var canvasView: PKCanvasView = {
         let view = PKCanvasView()
         view.backgroundColor = .systemBackground
         view.maximumZoomScale = 10
-        view.minimumZoomScale = 0.1
-        view.tool = PKInkingTool(.pen, color: .black, width: 5)
+        view.minimumZoomScale = 1
+        view.tool = pen
         view.drawingPolicy = .anyInput
         
         return view
@@ -159,27 +187,35 @@ class CanvasViewController: UIViewController {
 // MARK: - button handlers
 
 extension CanvasViewController {
-    private func save(_ action: UIAction) {
+    private func saveHandler(_ action: UIAction) {
         
     }
     
-    private func load(_ action: UIAction) {
+    private func loadHandler(_ action: UIAction) {
         
     }
     
-    private func add(_ action: UIAction) {
+    private func addHandler(_ action: UIAction) {
         
     }
     
-    private func undo(_ action: UIAction) {
+    private func undoHandler(_ action: UIAction) {
         
     }
     
-    private func redo(_ action: UIAction) {
+    private func redoHandler(_ action: UIAction) {
         
     }
     
-    private func pen(_ action: UIAction) {
+    private func penHandler(_ action: UIAction) {
+        
+    }
+    
+    private func markerHandler(_ action: UIAction) {
+        
+    }
+    
+    private func lassoHandler(_ action: UIAction) {
         
     }
     
