@@ -197,8 +197,7 @@ class SketchViewController: UIViewController {
         view.addSubview(canvasView)
         canvasView.subviews[0].insertSubview(backgroundImageView, at: 0)
         
-        leftToolStackView.setCustomSpacing(20.0, after: loadButton)
-        rightToolStackView.setCustomSpacing(20.0, after: redoButton)
+        layoutTrait()
     }
     
     private func setConstraints() {
@@ -239,6 +238,19 @@ class SketchViewController: UIViewController {
         } else {
             redoButton.isEnabled = false
         }
+    }
+    
+    private func layoutTrait() {
+        let spacing: CGFloat = traitCollection.horizontalSizeClass == .compact ? 20.0 : 60.0
+        
+        leftToolStackView.setCustomSpacing(spacing, after: loadButton)
+        rightToolStackView.setCustomSpacing(spacing, after: redoButton)
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        layoutTrait()
     }
 }
 
