@@ -94,6 +94,10 @@ class CanvasViewController: UIViewController {
     let canvasView: PKCanvasView = {
         let view = PKCanvasView()
         view.backgroundColor = .systemBackground
+        view.maximumZoomScale = 10
+        view.minimumZoomScale = 0.1
+        view.tool = PKInkingTool(.pen, color: .black, width: 5)
+        view.drawingPolicy = .anyInput
         
         return view
     }()
