@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		22DA5129D4C282861CC16E7A /* Pods_SketchApp_SketchAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657FAE7C17139CC08455C328 /* Pods_SketchApp_SketchAppUITests.framework */; };
-		6BADC0CE269AB8AD00FC1DAE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0CD269AB8AC00FC1DAE /* Colors.swift */; };
-		6BADC0CF269AB8AD00FC1DAE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0CD269AB8AC00FC1DAE /* Colors.swift */; };
+		6BADC0CE269AB8AD00FC1DAE /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0CD269AB8AC00FC1DAE /* ColorType.swift */; };
+		6BADC0CF269AB8AD00FC1DAE /* ColorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0CD269AB8AC00FC1DAE /* ColorType.swift */; };
 		6BBF76982699E34900DF4631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF76972699E34900DF4631 /* AppDelegate.swift */; };
 		6BBF769A2699E34900DF4631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF76992699E34900DF4631 /* SceneDelegate.swift */; };
 		6BBF769C2699E34900DF4631 /* CanvasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF769B2699E34900DF4631 /* CanvasViewController.swift */; };
@@ -47,7 +47,7 @@
 		58532EDF9EBC6E95A3174F88 /* Pods-SketchApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SketchApp.release.xcconfig"; path = "Target Support Files/Pods-SketchApp/Pods-SketchApp.release.xcconfig"; sourceTree = "<group>"; };
 		63E75C7BF398A674392B58E5 /* Pods-SketchApp-SketchAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SketchApp-SketchAppUITests.debug.xcconfig"; path = "Target Support Files/Pods-SketchApp-SketchAppUITests/Pods-SketchApp-SketchAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		657FAE7C17139CC08455C328 /* Pods_SketchApp_SketchAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SketchApp_SketchAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BADC0CD269AB8AC00FC1DAE /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		6BADC0CD269AB8AC00FC1DAE /* ColorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorType.swift; sourceTree = "<group>"; };
 		6BBF76942699E34900DF4631 /* SketchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBF76972699E34900DF4631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BBF76992699E34900DF4631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				6BBF76A52699E34C00DF4631 /* LaunchScreen.storyboard */,
 				6BBF76A82699E34C00DF4631 /* Info.plist */,
 				6BBF76CA269A139E00DF4631 /* ToolButton.swift */,
-				6BADC0CD269AB8AC00FC1DAE /* Colors.swift */,
+				6BADC0CD269AB8AC00FC1DAE /* ColorType.swift */,
 			);
 			path = SketchApp;
 			sourceTree = "<group>";
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBF769C2699E34900DF4631 /* CanvasViewController.swift in Sources */,
-				6BADC0CE269AB8AD00FC1DAE /* Colors.swift in Sources */,
+				6BADC0CE269AB8AD00FC1DAE /* ColorType.swift in Sources */,
 				6BBF76CB269A139E00DF4631 /* ToolButton.swift in Sources */,
 				6BBF76982699E34900DF4631 /* AppDelegate.swift in Sources */,
 				6BBF769A2699E34900DF4631 /* SceneDelegate.swift in Sources */,
@@ -427,7 +427,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBF76B22699E34C00DF4631 /* SketchAppTests.swift in Sources */,
-				6BADC0CF269AB8AD00FC1DAE /* Colors.swift in Sources */,
+				6BADC0CF269AB8AD00FC1DAE /* ColorType.swift in Sources */,
 				6BBF76CC269A139E00DF4631 /* ToolButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

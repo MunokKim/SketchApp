@@ -12,7 +12,10 @@ import SnapKit
 class CanvasViewController: UIViewController {
     // MARK: - Declarations
     
-    var pen = PKInkingTool(.pen, color: Colors.primary.color, width: 5)
+    var pen = PKInkingTool(.pen, color: ColorType.primary.color, width: 5)
+    var marker = PKInkingTool(.marker, color: ColorType.primary.color, width: 20)
+    var lasso = PKLassoTool()
+    var eraser = PKEraserTool(.bitmap)
     
     // MARK: - Views
     
@@ -34,7 +37,7 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var saveButton: ToolButton = {
-        let action = UIAction(title: "SAVE", handler: saveHandler)
+        let action = UIAction(title: "SAVE", handler: { _ in })
         let button = ToolButton(primaryAction: action)
         button.titleLabel?.font = button.titleLabel?.font.withSize(4)
         
@@ -42,14 +45,14 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var loadButton: ToolButton = {
-        let action = UIAction(title: "LOAD", handler: loadHandler)
+        let action = UIAction(title: "LOAD", handler: { _ in })
         let button = ToolButton(primaryAction: action)
         
         return button
     }()
     
     lazy var addButton: ToolButton = {
-        let action = UIAction(title: "ADD", handler: addHandler)
+        let action = UIAction(title: "ADD", handler: { _ in })
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -67,7 +70,7 @@ class CanvasViewController: UIViewController {
     
     lazy var undoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.backward")
-        let action = UIAction(image: image, handler: undoHandler)
+        let action = UIAction(image: image, handler: { _ in })
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -75,7 +78,7 @@ class CanvasViewController: UIViewController {
     
     lazy var redoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.forward")
-        let action = UIAction(image: image, handler: redoHandler)
+        let action = UIAction(image: image, handler: { _ in })
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -83,23 +86,30 @@ class CanvasViewController: UIViewController {
     
     lazy var penButton: ToolButton = {
         let primaryAction = UIAction(title: "PEN", handler: { _ in })
-        let penActions = Colors.allCases
-            .map {
-                UIAction(
-                    image: UIImage(systemName: "pencil")!.withTintColor($0.color, renderingMode: .alwaysOriginal),
-                    identifier: UIAction.Identifier($0.rawValue),
-                    handler: penHandler
-                )
-            }
-        let markerActions = Colors.allCases
-            .map {
-                UIAction(
-                    image: UIImage(systemName: "scribble.variable")!.withTintColor($0.color, renderingMode: .alwaysOriginal),
-                    identifier: UIAction.Identifier($0.rawValue),
-                    handler: markerHandler
-                )
-            }
-        let lassoAction = UIAction(title: "Lasso", image: UIImage(systemName: "lasso"), handler: lassoHandler)
+        let penActions = ColorType.allCases.map { (colorType) -> UIAction in
+            return UIAction(
+                image: UIImage(systemName: "pencil")!.withTintColor(colorType.color, renderingMode: .alwaysOriginal),
+                handler: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.pen.color = colorType.color
+                    self.canvasView.tool = self.pen
+                }
+            )
+        }
+        let markerActions = ColorType.allCases.map { (colorType) -> UIAction in
+            return UIAction(
+                image: UIImage(systemName: "scribble.variable")!.withTintColor(colorType.color, renderingMode: .alwaysOriginal),
+                handler: { [unowned self] _ in
+                    marker.color = colorType.color
+                    canvasView.tool = marker
+                }
+            )
+        }
+        let lassoAction = UIAction(
+            title: "Lasso",
+            image: UIImage(systemName: "lasso"),
+            handler: { [unowned self] _ in canvasView.tool = lasso }
+        )
         
         let penMenu = UIMenu(title: "Pen", image: UIImage(systemName: "pencil"), children: penActions)
         let markerMenu = UIMenu(title: "Marker", image: UIImage(systemName: "scribble.variable"), children: markerActions)
@@ -113,7 +123,10 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var eraseButton: ToolButton = {
-        let action = UIAction(title: "ERASE", handler: erase)
+        let action = UIAction(
+            title: "ERASE",
+            handler: { [unowned self] _ in canvasView.tool = eraser }
+        )
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -181,46 +194,6 @@ class CanvasViewController: UIViewController {
             make.top.equalTo(toolBarView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
-    }
-}
-
-// MARK: - button handlers
-
-extension CanvasViewController {
-    private func saveHandler(_ action: UIAction) {
-        
-    }
-    
-    private func loadHandler(_ action: UIAction) {
-        
-    }
-    
-    private func addHandler(_ action: UIAction) {
-        
-    }
-    
-    private func undoHandler(_ action: UIAction) {
-        
-    }
-    
-    private func redoHandler(_ action: UIAction) {
-        
-    }
-    
-    private func penHandler(_ action: UIAction) {
-        
-    }
-    
-    private func markerHandler(_ action: UIAction) {
-        
-    }
-    
-    private func lassoHandler(_ action: UIAction) {
-        
-    }
-    
-    private func erase(_ action: UIAction) {
-        
     }
 }
 
