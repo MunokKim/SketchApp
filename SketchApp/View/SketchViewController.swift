@@ -88,7 +88,10 @@ class SketchViewController: UIViewController {
     
     lazy var undoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.backward")
-        let action = UIAction(image: image, handler: { _ in })
+        let action = UIAction(image: image) { [unowned self] _ in
+            undoManager?.undo()
+            refreshButtons()
+        }
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -96,7 +99,10 @@ class SketchViewController: UIViewController {
     
     lazy var redoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.forward")
-        let action = UIAction(image: image, handler: { _ in })
+        let action = UIAction(image: image) { [unowned self] _ in
+            undoManager?.redo()
+            refreshButtons()
+        }
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -202,13 +208,22 @@ class SketchViewController: UIViewController {
             make.leading.trailing.bottom.equalToSuperview()
         }
     }
+    
+    private func refreshButtons() {
+        if let canUndo = canvasView.undoManager?.canUndo {
+            undoButton.isEnabled = canUndo
+        }
+        if let canRedo = canvasView.undoManager?.canRedo {
+            redoButton.isEnabled = canRedo
+        }
+    }
 }
 
 // MARK: - PKCanvasViewDelegate
 
 extension SketchViewController: PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
-        
+        refreshButtons()
     }
 }
 
