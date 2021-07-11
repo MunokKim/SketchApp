@@ -266,10 +266,6 @@ extension SketchViewController: Loadable {
         canvasView.undoManager?.removeAllActions()
         refreshButtons()
     }
-    
-    func setScreenshot(withImage image: UIImage) {
-        
-    }
 }
 
 // MARK: - PHPickerViewControllerDelegate

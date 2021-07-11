@@ -9,5 +9,4 @@ import UIKit
 
 protocol Loadable: AnyObject {
     func setDrawing(withData drawingData: Data)
-    func setScreenshot(withImage image: UIImage)
 }
