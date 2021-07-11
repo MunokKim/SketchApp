@@ -9,6 +9,7 @@ import UIKit
 import PencilKit
 import SnapKit
 import CoreData
+import PhotosUI
 
 class SketchViewController: UIViewController {
     // MARK: - Declarations
@@ -70,8 +71,11 @@ class SketchViewController: UIViewController {
     }()
     
     lazy var addButton: ToolButton = {
-        let action = UIAction(title: "ADD") { _ in
-            
+        let action = UIAction(title: "ADD") { [unowned self] _ in
+            let pickerConfig = PHPickerConfiguration()
+            let pickerViewController = PHPickerViewController(configuration: pickerConfig)
+            pickerViewController.delegate = self
+            self.present(pickerViewController, animated: true, completion: nil)
         }
         let button = ToolButton(primaryAction: action)
         
@@ -149,13 +153,21 @@ class SketchViewController: UIViewController {
     
     lazy var canvasView: PKCanvasView = {
         let view = PKCanvasView()
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .clear
+        view.isOpaque = false
         view.maximumZoomScale = 10
         view.minimumZoomScale = 1
         view.tool = pen
         view.drawingPolicy = .anyInput
         
         return view
+    }()
+    
+    let backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
     }()
     
     // MARK: - Life cycles
@@ -183,6 +195,7 @@ class SketchViewController: UIViewController {
         rightToolStackView.addArrangedSubview(penButton)
         rightToolStackView.addArrangedSubview(eraseButton)
         view.addSubview(canvasView)
+        canvasView.subviews[0].insertSubview(backgroundImageView, at: 0)
         
         leftToolStackView.setCustomSpacing(20.0, after: loadButton)
         rightToolStackView.setCustomSpacing(20.0, after: redoButton)
@@ -209,6 +222,10 @@ class SketchViewController: UIViewController {
             make.top.equalTo(toolBarView.snp.bottom)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func refreshButtons() {
@@ -231,6 +248,13 @@ extension SketchViewController: PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
         refreshButtons()
     }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        let offsetX: CGFloat = max((scrollView.bounds.size.width - scrollView.contentSize.width) * 0.5, 0.0)
+        let offsetY: CGFloat = max((scrollView.bounds.size.height - scrollView.contentSize.height) * 0.5, 0.0)
+        backgroundImageView.frame.size = CGSize(width: self.view.bounds.width * scrollView.zoomScale, height: self.view.bounds.height * scrollView.zoomScale)
+        backgroundImageView.center = CGPoint(x: scrollView.contentSize.width * 0.5 + offsetX, y: scrollView.contentSize.height * 0.5 + offsetY)
+    }
 }
 
 // MARK: - Loadable
@@ -245,5 +269,23 @@ extension SketchViewController: Loadable {
     
     func setScreenshot(withImage image: UIImage) {
         
+    }
+}
+
+// MARK: - PHPickerViewControllerDelegate
+
+extension SketchViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        if
+            let itemProvider = results.first?.itemProvider,
+            itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { [unowned self] (image, error) in
+                DispatchQueue.main.async {
+                    self.backgroundImageView.image = image as? UIImage
+                }
+            }
+        }
     }
 }

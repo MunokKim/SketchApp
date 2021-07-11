@@ -16,16 +16,16 @@
 		6BADC0E1269AED9D00FC1DAE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0DF269AED9D00FC1DAE /* CoreDataManager.swift */; };
 		6BADC0E3269AF38900FC1DAE /* DrawingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0E2269AF38900FC1DAE /* DrawingModel.swift */; };
 		6BADC0E4269AF38900FC1DAE /* DrawingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0E2269AF38900FC1DAE /* DrawingModel.swift */; };
-		6BADC0ED269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0EB269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift */; };
-		6BADC0EE269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0EB269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift */; };
-		6BADC0EF269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0EC269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift */; };
-		6BADC0F0269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0EC269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift */; };
 		6BADC0F2269B027400FC1DAE /* DrawingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F1269B027400FC1DAE /* DrawingListViewController.swift */; };
 		6BADC0F3269B027400FC1DAE /* DrawingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F1269B027400FC1DAE /* DrawingListViewController.swift */; };
 		6BADC0F6269B157A00FC1DAE /* DrawingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F5269B157A00FC1DAE /* DrawingCell.swift */; };
 		6BADC0F7269B157A00FC1DAE /* DrawingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F5269B157A00FC1DAE /* DrawingCell.swift */; };
 		6BADC0F9269B28C900FC1DAE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F8269B28C900FC1DAE /* Loadable.swift */; };
 		6BADC0FA269B28C900FC1DAE /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0F8269B28C900FC1DAE /* Loadable.swift */; };
+		6BADC0FD269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0FB269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift */; };
+		6BADC0FE269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0FB269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift */; };
+		6BADC0FF269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0FC269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift */; };
+		6BADC100269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BADC0FC269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift */; };
 		6BBF76982699E34900DF4631 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF76972699E34900DF4631 /* AppDelegate.swift */; };
 		6BBF769A2699E34900DF4631 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF76992699E34900DF4631 /* SceneDelegate.swift */; };
 		6BBF769C2699E34900DF4631 /* SketchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BBF769B2699E34900DF4631 /* SketchViewController.swift */; };
@@ -67,11 +67,11 @@
 		6BADC0D8269AE48500FC1DAE /* SketchApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SketchApp.xcdatamodel; sourceTree = "<group>"; };
 		6BADC0DF269AED9D00FC1DAE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6BADC0E2269AF38900FC1DAE /* DrawingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingModel.swift; sourceTree = "<group>"; };
-		6BADC0EB269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawingEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
-		6BADC0EC269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawingEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		6BADC0F1269B027400FC1DAE /* DrawingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingListViewController.swift; sourceTree = "<group>"; };
 		6BADC0F5269B157A00FC1DAE /* DrawingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawingCell.swift; sourceTree = "<group>"; };
 		6BADC0F8269B28C900FC1DAE /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		6BADC0FB269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawingEntity+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		6BADC0FC269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DrawingEntity+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6BBF76942699E34900DF4631 /* SketchApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SketchApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BBF76972699E34900DF4631 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BBF76992699E34900DF4631 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -137,8 +137,8 @@
 		6BADC0DB269AE55900FC1DAE /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6BADC0EB269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift */,
-				6BADC0EC269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift */,
+				6BADC0FB269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift */,
+				6BADC0FC269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift */,
 				6BADC0D7269AE48500FC1DAE /* SketchApp.xcdatamodeld */,
 				6BADC0E2269AF38900FC1DAE /* DrawingModel.swift */,
 				6BADC0DF269AED9D00FC1DAE /* CoreDataManager.swift */,
@@ -463,18 +463,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBF769C2699E34900DF4631 /* SketchViewController.swift in Sources */,
-				6BADC0ED269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */,
 				6BADC0D9269AE48500FC1DAE /* SketchApp.xcdatamodeld in Sources */,
-				6BADC0EF269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */,
 				6BADC0F9269B28C900FC1DAE /* Loadable.swift in Sources */,
 				6BADC0F2269B027400FC1DAE /* DrawingListViewController.swift in Sources */,
 				6BADC0E3269AF38900FC1DAE /* DrawingModel.swift in Sources */,
 				6BADC0CE269AB8AD00FC1DAE /* ColorType.swift in Sources */,
 				6BBF76CB269A139E00DF4631 /* ToolButton.swift in Sources */,
+				6BADC0FD269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */,
 				6BADC0F6269B157A00FC1DAE /* DrawingCell.swift in Sources */,
 				6BBF76982699E34900DF4631 /* AppDelegate.swift in Sources */,
 				6BADC0E0269AED9D00FC1DAE /* CoreDataManager.swift in Sources */,
 				6BBF769A2699E34900DF4631 /* SceneDelegate.swift in Sources */,
+				6BADC0FF269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,14 +483,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				6BBF76B22699E34C00DF4631 /* SketchAppTests.swift in Sources */,
+				6BADC100269B4BBB00FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */,
 				6BADC0DA269AE48500FC1DAE /* SketchApp.xcdatamodeld in Sources */,
 				6BADC0CF269AB8AD00FC1DAE /* ColorType.swift in Sources */,
-				6BADC0EE269B00D200FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */,
 				6BADC0E1269AED9D00FC1DAE /* CoreDataManager.swift in Sources */,
-				6BADC0F0269B00D200FC1DAE /* DrawingEntity+CoreDataProperties.swift in Sources */,
 				6BADC0E4269AF38900FC1DAE /* DrawingModel.swift in Sources */,
 				6BADC0F3269B027400FC1DAE /* DrawingListViewController.swift in Sources */,
 				6BADC0FA269B28C900FC1DAE /* Loadable.swift in Sources */,
+				6BADC0FE269B4BBB00FC1DAE /* DrawingEntity+CoreDataClass.swift in Sources */,
 				6BADC0F7269B157A00FC1DAE /* DrawingCell.swift in Sources */,
 				6BBF76CC269A139E00DF4631 /* ToolButton.swift in Sources */,
 			);
