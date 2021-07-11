@@ -11,6 +11,9 @@ import PencilKit
 class DrawingListViewController: UIViewController {
     // MARK: - Declarations
     
+    let drawings: [DrawingModel]
+    weak var loadable: Loadable?
+    
     let drawingCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
@@ -22,10 +25,16 @@ class DrawingListViewController: UIViewController {
         return collectionView
     }()
     
-    let drawings: [DrawingModel]
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    // MARK: - Life cycles
+    
+    init(
+        withDrawings drawings: [DrawingModel],
+        withLoadable loadable: Loadable
+    ) {
+        self.drawings = drawings
+        self.loadable = loadable
+        
+        super.init(nibName: nil, bundle: nil)
         
         drawingCollectionView.dataSource = self
         drawingCollectionView.delegate = self
@@ -37,12 +46,6 @@ class DrawingListViewController: UIViewController {
         }
         
         drawingCollectionView.reloadData()
-    }
-    
-    init(withDrawings drawings: [DrawingModel]) {
-        self.drawings = drawings
-        
-        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -84,5 +87,11 @@ extension DrawingListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = CGFloat(floorf(Float(self.view.frame.width) / 3))
         return CGSize(width: width, height: width)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let drawingData = drawings[indexPath.item].drawingData
+        loadable?.setDrawing(withData: drawingData)
+        dismiss(animated: true, completion: nil)
     }
 }

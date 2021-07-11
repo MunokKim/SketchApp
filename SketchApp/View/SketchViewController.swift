@@ -1,5 +1,5 @@
 //
-//  CanvasViewController.swift
+//  SketchViewController.swift
 //  SketchApp
 //
 //  Created by 김문옥 on 2021/07/10.
@@ -10,7 +10,7 @@ import PencilKit
 import SnapKit
 import CoreData
 
-class CanvasViewController: UIViewController {
+class SketchViewController: UIViewController {
     // MARK: - Declarations
     
     var pen = PKInkingTool(.pen, color: ColorType.primary.color, width: 5)
@@ -58,7 +58,10 @@ class CanvasViewController: UIViewController {
         let action = UIAction(title: "LOAD") { [unowned self] _ in
             guard let drawings = CoreDataManager.shared.load()
             else { return }
-            let drawingListViewController = DrawingListViewController(withDrawings: drawings)
+            let drawingListViewController = DrawingListViewController(
+                withDrawings: drawings,
+                withLoadable: self
+            )
             self.present(drawingListViewController, animated: true, completion: nil)
         }
         let button = ToolButton(primaryAction: action)
@@ -203,8 +206,21 @@ class CanvasViewController: UIViewController {
 
 // MARK: - PKCanvasViewDelegate
 
-extension CanvasViewController: PKCanvasViewDelegate {
+extension SketchViewController: PKCanvasViewDelegate {
     func canvasViewDrawingDidChange(_ canvasView: PKCanvasView) {
+        
+    }
+}
+
+// MARK: - Loadable
+
+extension SketchViewController: Loadable {
+    func setDrawing(withData drawingData: Data) {
+        guard let drawing = try? PKDrawing(data: drawingData) else { return }
+        canvasView.drawing = drawing
+    }
+    
+    func setScreenshot(withImage image: UIImage) {
         
     }
 }
