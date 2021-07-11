@@ -70,7 +70,9 @@ class SketchViewController: UIViewController {
     }()
     
     lazy var addButton: ToolButton = {
-        let action = UIAction(title: "ADD", handler: { _ in })
+        let action = UIAction(title: "ADD") { _ in
+            
+        }
         let button = ToolButton(primaryAction: action)
         
         return button
@@ -89,7 +91,7 @@ class SketchViewController: UIViewController {
     lazy var undoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.backward")
         let action = UIAction(image: image) { [unowned self] _ in
-            undoManager?.undo()
+            canvasView.undoManager?.undo()
             refreshButtons()
         }
         let button = ToolButton(primaryAction: action)
@@ -100,7 +102,7 @@ class SketchViewController: UIViewController {
     lazy var redoButton: ToolButton = {
         let image = UIImage(systemName: "arrow.forward")
         let action = UIAction(image: image) { [unowned self] _ in
-            undoManager?.redo()
+            canvasView.undoManager?.redo()
             refreshButtons()
         }
         let button = ToolButton(primaryAction: action)
@@ -162,9 +164,9 @@ class SketchViewController: UIViewController {
         super.viewDidLoad()
         
         canvasView.delegate = self
-        
         configueUI()
         setConstraints()
+        refreshButtons()
     }
     
     // MARK: - UIs
@@ -212,9 +214,13 @@ class SketchViewController: UIViewController {
     private func refreshButtons() {
         if let canUndo = canvasView.undoManager?.canUndo {
             undoButton.isEnabled = canUndo
+        } else {
+            undoButton.isEnabled = false
         }
         if let canRedo = canvasView.undoManager?.canRedo {
             redoButton.isEnabled = canRedo
+        } else {
+            redoButton.isEnabled = false
         }
     }
 }
@@ -233,6 +239,8 @@ extension SketchViewController: Loadable {
     func setDrawing(withData drawingData: Data) {
         guard let drawing = try? PKDrawing(data: drawingData) else { return }
         canvasView.drawing = drawing
+        canvasView.undoManager?.removeAllActions()
+        refreshButtons()
     }
     
     func setScreenshot(withImage image: UIImage) {
