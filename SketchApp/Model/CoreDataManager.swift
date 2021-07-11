@@ -25,8 +25,7 @@ class CoreDataManager: NSObject {
     }
     
     public func save(withData drawingData: Data, completion: @escaping (Error?) -> ()) {
-        managedObject.setValue(UUID(), forKey: "uuid")
-        managedObject.setValue(drawingData, forKey: "data")
+        managedObject.setValue(drawingData, forKey: "drawingData")
         managedObject.setValue(Date(), forKey: "savingTime")
         
         do {
@@ -38,7 +37,14 @@ class CoreDataManager: NSObject {
         }
     }
     
-    public func load() -> [DrawingModel] {
-        return []
+    public func load() -> [DrawingModel]? {
+        do {
+            let drawings = try context.fetch(DrawingEntity.fetchRequest()) as! [DrawingEntity]
+            return drawings.map { DrawingModel(drawingData: $0.drawingData, savingTime: $0.savingTime) }
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        return nil
     }
 }

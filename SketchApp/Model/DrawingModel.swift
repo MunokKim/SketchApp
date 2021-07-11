@@ -8,7 +8,6 @@
 import Foundation
 
 struct DrawingModel {
-    let id: UUID
-    let data: Data
+    let drawingData: Data
     let savingTime: Date
 }

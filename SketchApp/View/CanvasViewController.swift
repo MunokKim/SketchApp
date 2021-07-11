@@ -36,7 +36,8 @@ class CanvasViewController: UIViewController {
     }()
     
     lazy var saveButton: ToolButton = {
-        let action = UIAction(title: "SAVE", handler: { [unowned self] _ in
+        let action = UIAction(title: "SAVE") { [unowned self] _ in
+            guard canvasView.drawing.bounds.size != .zero && !canvasView.drawing.strokes.isEmpty else { return }
             let drawingData = canvasView.drawing.dataRepresentation()
             CoreDataManager.shared.save(withData: drawingData) { (error) in
                 let alertTitle = error != nil ? error.debugDescription : "Save success!"
@@ -45,16 +46,21 @@ class CanvasViewController: UIViewController {
                 }
                 let alertController = UIAlertController(title: alertTitle, message: nil, preferredStyle: .alert)
                 alertController.addAction(action)
-                present(alertController, animated: true, completion: nil)
+                self.present(alertController, animated: true, completion: nil)
             }
-        })
+        }
         let button = ToolButton(primaryAction: action)
         
         return button
     }()
     
     lazy var loadButton: ToolButton = {
-        let action = UIAction(title: "LOAD", handler: { _ in })
+        let action = UIAction(title: "LOAD") { [unowned self] _ in
+            guard let drawings = CoreDataManager.shared.load()
+            else { return }
+            let drawingListViewController = DrawingListViewController(withDrawings: drawings)
+            self.present(drawingListViewController, animated: true, completion: nil)
+        }
         let button = ToolButton(primaryAction: action)
         
         return button
