@@ -1,9 +1,16 @@
 # SketchApp
 
-> PencilKit을 활용한 드로잉 애플리케이션
+> PencilKit을 활용한 드로잉 앱
 
 [![Swift](https://img.shields.io/badge/Swift-5.0+-orange.svg)](https://swift.org)
 [![iOS](https://img.shields.io/badge/iOS-14.0+-lightgrey.svg)](https://www.apple.com/ios/)
+
+---
+
+## 스크린샷
+
+| <img width="779" height="1096" alt="스크린샷 2025-12-10 오후 4 24 48" src="https://github.com/user-attachments/assets/165caf56-b1f0-4861-8908-bf8da8b90171" /> | <img width="779" height="1096" alt="스크린샷 2025-12-10 오후 4 13 01" src="https://github.com/user-attachments/assets/156c19e0-33f9-4ba3-b8f6-e2df57ef5064" /> | <img width="779" height="1096" alt="스크린샷 2025-12-10 오후 4 16 38" src="https://github.com/user-attachments/assets/c51d3155-038a-4b8d-8f54-3efd85b5cd26" /> |
+| :----------------------------------: | :----------------------------------: | :----------------------------------: |
 
 ---
 
@@ -163,20 +170,3 @@ open SketchApp.xcworkspace
 ```
 
 **권장**: Apple Pencil을 지원하는 iPad에서 실행하면 최적의 경험을 할 수 있습니다.
-
----
-
-## 라이선스
-
-이 프로젝트는 MIT 라이선스를 따릅니다.
-
----
-
-## 작성자
-
-**Munok Kim**
-- GitHub: [@MunokKim](https://github.com/MunokKim)
-
----
-
-**Made in 2021 | Learning PencilKit**
